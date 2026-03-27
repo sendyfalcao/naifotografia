@@ -48,7 +48,7 @@ public class EnsaioService {
             precoBase += 800.00;
         }
 
-        ensaio.setValor(precoBase);
+        ensaio.setValor(java.math.BigDecimal.valueOf(precoBase));
         return repository.save(ensaio);
     }
 

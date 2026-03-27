@@ -1,6 +1,7 @@
 package com.naifotografia.api.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal; 
 
 /**
  * Entidade de domínio que representa uma produção fotográfica ou audiovisual.
@@ -24,7 +25,7 @@ public class Ensaio {
     private String dataEnsaio;
 
     @Column(precision = 10, scale = 2)
-    private Double valor;
+    private BigDecimal valor;
 
     /** Status do workflow de vídeo: Bruto, Em Edição ou Finalizado */
     @Column(name = "status_video")
@@ -79,11 +80,13 @@ public class Ensaio {
         this.dataEnsaio = dataEnsaio;
     }
 
-    public Double getValor() {
+    // GETTER 
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    // SETTER 
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

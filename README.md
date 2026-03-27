@@ -5,7 +5,7 @@
 ---
 
 ## 🚀 Sobre o Projeto
-O **Naifotografia** é uma solução Backend robusta que centraliza a gestão de ensaios fotográficos. O projeto nasceu da necessidade de facilitar o WorkFlow de uma profissional do AudioVisual, facilitando o acesso dos clientes ao status de edição, links de seleção e entrega de fotos e simulação de orçamento em uma interface única e eficiente.
+O **Naifotografia** é uma solução Backend robusta que centraliza a gestão de ensaios fotográficos. O projeto nasceu da necessidade de facilitar o WorkFlow de uma profissional do AudioVisual, viabilizando o acesso dos clientes ao status de edição, links de seleção e entrega de fotos e simulação de orçamento em uma interface única e eficiente.
 
 ---
 
@@ -55,3 +55,4 @@ SPRING_DATASOURCE_PASSWORD
 
 Execute o projeto via Maven ou sua IDE de preferência.
 
+git add .

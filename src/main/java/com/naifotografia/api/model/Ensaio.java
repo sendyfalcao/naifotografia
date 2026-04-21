@@ -1,53 +1,47 @@
 package com.naifotografia.api.model;
 
+import com.naifotografia.api.dto.EnsaioRequestDTO;
 import jakarta.persistence.*;
-import java.math.BigDecimal; 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
- * Entidade de domínio que representa uma produção fotográfica ou audiovisual.
- * Mapeia os dados contratuais, status de pós-produção e os endpoints de entrega digital.
+ * Entidade JPA representando um ensaio fotográfico/videográfico.
+ * Mapeia a tabela correspondente no banco de dados MySQL.
  */
 @Entity
-@Table(name = "tb_ensaios")
+@Table(name = "ensaios")
 public class Ensaio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 150)
     private String cliente;
-
-    @Column(name = "tipo_ensaio", nullable = false)
-    private String tipoEnsaio; // Ex: Individual, Evento, Pet
-
-    @Column(name = "data_ensaio")
-    private String dataEnsaio;
-
-    @Column(precision = 10, scale = 2)
+    private String tipoEnsaio;
+    private LocalDate dataEnsaio;
     private BigDecimal valor;
-
-    /** Status do workflow de vídeo: Bruto, Em Edição ou Finalizado */
-    @Column(name = "status_video")
     private String statusVideo;
-
-    /** Indica se o cliente concluiu a seleção das fotos na galeria (Google Drive) */
-    @Column(name = "fotos_selecionadas")
-    private Boolean fotosSelecionadas = false;
-
-    /** URI de entrega para fotos (Google Drive) */
-    @Column(name = "link_drive", length = 500)
+    private Boolean fotosSelecionadas;
     private String linkDrive;
-
-    /** URI de entrega para vídeo (YouTube) */
-    @Column(name = "link_youtube", length = 500)
     private String linkYoutube;
 
-    public Ensaio() {
+    // Construtor padrão necessário para JPA
+    public Ensaio() {}
+
+    // Construtor para criação a partir do DTO
+    public Ensaio(EnsaioRequestDTO dados) {
+        this.cliente = dados.cliente();
+        this.tipoEnsaio = dados.tipoEnsaio();
+        this.dataEnsaio = dados.dataEnsaio();
+        this.valor = dados.valor();
+        this.statusVideo = dados.statusVideo();
+        this.fotosSelecionadas = dados.fotosSelecionadas();
+        this.linkDrive = dados.linkDrive();
+        this.linkYoutube = dados.linkYoutube();
     }
 
-    // --- MÉTODOS DE ACESSO (GETTERS E SETTERS) ---
-
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -72,20 +66,18 @@ public class Ensaio {
         this.tipoEnsaio = tipoEnsaio;
     }
 
-    public String getDataEnsaio() {
+    public LocalDate getDataEnsaio() {
         return dataEnsaio;
     }
 
-    public void setDataEnsaio(String dataEnsaio) {
+    public void setDataEnsaio(LocalDate dataEnsaio) {
         this.dataEnsaio = dataEnsaio;
     }
 
-    // GETTER 
     public BigDecimal getValor() {
         return valor;
     }
 
-    // SETTER 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
